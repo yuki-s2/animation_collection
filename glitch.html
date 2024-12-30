@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <title>チカチカ光る02</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #1a191c;
+            color: #fff;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inner">
+        <h1>チカチカ光る02（css・js）</h1>
+        <p class="textSmall">参考 https://photoshopvip.net/121899</p>
+        <div class="contents">
+            <canvas></canvas>
+        </div>
+        <script>
+            const canvas = document.querySelector("canvas");
+            //他にも"webgl"などある
+            const ctx = canvas.getContext("2d");
+            const colors = [
+                "#b4b2b5",
+                "#dfd73f",
+                "#6ed2dc",
+                "#66cf5d",
+                "#c542cb",
+                "#d0535e",
+                "#3733c9"
+            ];
+
+            let rAF;
+
+            //キャンバスの解像度を動的に変更。描画がぼやけないようにするため
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight / 3;
+            }
+
+            function texts(color) {
+                //カラフルの文字 【Glitch】
+                ctx.fillStyle = color;
+                ctx.font = "20vh Bungee Outline";
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = color;
+                //斜めにする
+                ctx.setTransform(1, -0.15, 0, 1, 0, -10);
+                ctx.fillText("Glitch", canvas.width / 2, canvas.height / 2 - 5);
+
+                //白の文字 【Glitch】
+                ctx.fillStyle = "white";
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = color;
+                ctx.fillText("Glitch", canvas.width / 2, canvas.height / 2);
+
+                //白の文字 【Effect】
+                ctx.fillStyle = "#fff";
+                ctx.font = "18vh Bungee Inline";
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = color;
+                ctx.setTransform(1, -0.15, 0, 1, 0, -10);
+                ctx.fillText(
+                    "Effect",
+                    canvas.width / 2,
+                    canvas.height / 2 + canvas.height / 10
+                );
+
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+            }
+
+            function glitch() {
+                rAF = window.requestAnimationFrame(glitch);
+
+                ctx.fillStyle = "#1a191c";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                //テキストをランダムな色にする
+                //Math.floor 小数点以下を切り捨て
+                texts(colors[Math.floor(Math.random() * 7)]);
+                ctx.shadowBlur = 0;
+                ctx.shadowColor = "none";
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+                //ノイズエフェクト（下）
+                for (let i = 0; i < 1000; i++) {
+                    //白にランダムな不透明度${Math.random() * 0.01})
+                    ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.01})`;
+                    ctx.fillRect(
+                        Math.floor(Math.random() * canvas.width),
+                        Math.floor(Math.random() * canvas.height),
+                        Math.floor(Math.random() * 30) + 1,
+                        Math.floor(Math.random() * 30) + 1
+                    );
+
+                    ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.1})`;
+                    ctx.fillRect(
+                        Math.floor(Math.random() * canvas.width),
+                        Math.floor(Math.random() * canvas.height),
+                        Math.floor(Math.random() * 25) + 1,
+                        Math.floor(Math.random() * 25) + 1
+                    );
+                }
+
+                //四角形をランダムな色にする
+                ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                //四角形をランダムなサイズに表示
+                ctx.fillRect(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height,
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height
+                );
+                ctx.setTransform(1, 0, 0, 0.8, 0.2, 0);
+            }
+
+            // ウィンドウサイズを初期設定
+            resizeCanvas();
+            //ウィンドウがリサイズされたらキャンバスもリサイズ
+            window.addEventListener("resize", resizeCanvas);
+
+            //アニメーション開始
+            glitch();
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+.mt_01 {
+    margin-top: 100px;
+}
+
+img {
+    width: 100%;
+}
+
+.inner {
+    padding: 100px;
+}
+
+.contents {
+    padding: 50px; 
+}
+.textSmall {
+    letter-spacing: normal;
+    font-size: 14px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: normal;
+    text-align: center;
+}

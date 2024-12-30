@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <title>スクロールアニメーション</title>
+</head>
+
+<body>
+    <style>
+        .wrapper {
+            height: 100%;
+            position: relative;
+        }
+
+        @keyframes falling01 {
+            0% {
+                transform: scale(0) translateY(-1000px);
+            }
+
+            20% {
+                transform: scale(.5) translateY(-700px);
+            }
+
+            80% {
+                transform: scale(1) translateY(-40px);
+            }
+
+            85% {
+                transform: scale(1) translateY(0);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes falling02 {
+            0% {
+                transform: scale(0) translateY(-800px);
+            }
+
+            20% {
+                transform: scale(.5) translateY(-600px);
+            }
+
+            80% {
+                transform: scale(1) translateY(-30px);
+            }
+
+            85% {
+                transform: scale(1) translateY(0);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes falling03 {
+            0% {
+                transform: scale(0) translateY(-700px);
+            }
+
+            20% {
+                transform: scale(.5) translateY(-500px);
+            }
+
+            80% {
+                transform: scale(1) translateY(-20px);
+            }
+
+            85% {
+                transform: scale(1) translateY(0);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .coin {
+            position: absolute;
+            border-radius: 3px;
+            width: 70px;
+            height: 10px;
+        }
+
+        .coin-01 {
+            bottom: 30px;
+            right: 2%;
+            background-color: #1c677f;
+            height: 10px;
+            animation: falling01 linear forwards;
+            animation-timeline: view();
+            animation-range: cover 0% cover 100%;
+        }
+
+        .coin-02 {
+            bottom: 20px;
+            right: 10%;
+            background-color: #e4f767;
+            height: 10px;
+            animation: falling02 linear forwards;
+            animation-timeline: view();
+            animation-range: cover 0% cover 100%;
+        }
+
+        .coin-03 {
+            bottom: 10px;
+            right: 2%;
+            background-color: #f6affc;
+            height: 10px;
+            animation: falling03 linear forwards;
+            animation-timeline: view();
+            animation-range: cover 0% cover 100%;
+        }
+
+        .coin-04 {
+            bottom: 0;
+            right: 5%;
+            background-color: #00c1ff;
+        }
+
+        .block {
+            height: 80vh;
+        }
+
+        .block.area01 {
+            background: #b6fdda;
+        }
+
+        .block.area02 {
+            background: #8fdffc;
+        }
+
+        .block.area03 {
+            background: #efb8fa;
+        }
+    </style>
+    <div class="inner">
+        <h1>スクロース量でアニメーション （css）</h1>
+        <p class="textSmall" style="text-align: left;">
+            ・Scroll Progress Timeline<br>
+            どれだけスクロールしたかに応じて進行<br>
+            ・View Progress Timeline<br>
+            要素がスクロールポート内にどれだけ表示されているかに応じて進行<br>
+            https://www.bring-flower.com/blog/scroll-driven-animations/<br>
+            https://ics.media/entry/230718/<br>
+            https://scroll-driven-animations.style/tools/view-timeline/ranges/#range-start-name=contain&range-start-percentage=0&range-end-name=contain&range-end-percentage=50&view-timeline-axis=block&view-timeline-inset=0&subject-size=smaller&subject-animation=reveal&interactivity=clicktodrag&show-areas=yes&show-fromto=yes&show-labels=yes<br>
+        </p>
+        <div class="contents">
+            <div class="block area01"></div>
+            <div class="block area02">
+                <div class="wrapper">
+                    <div class="coin coin-01"></div>
+                    <div class="coin coin-02"></div>
+                    <div class="coin coin-03"></div>
+                    <div class="coin coin-04"></div>
+                </div>
+            </div>
+            <div class="block area03"></div>
+        </div>
+    </div>
+</body>
