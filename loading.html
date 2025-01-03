@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <title>ローディング ドット</title>
+</head>
+
+<body>
+    <style>
+        @keyframes pulse {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: .25;
+                transform: scale(.70);
+            }
+        }
+
+        .text {
+            letter-spacing: 2px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .spinner-box {
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            background-color: transparent;
+            gap: 5px;
+        }
+
+        .pulse-container {
+            width: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .pulse-bubble {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        .pulse-bubble-1 {
+            animation: pulse .7s ease 0s infinite alternate;
+        }
+
+        .pulse-bubble-2 {
+            animation: pulse .7s ease .2s infinite alternate;
+        }
+
+        .pulse-bubble-3 {
+            animation: pulse .7s ease .4s infinite alternate;
+        }
+    </style>
+    <div class="inner">
+        <h1>ローディングアニメーション （css）</h1>
+        <p class="textSmall">参考 https://photopizza.design/css_loading/</p>
+        <div class="contents">
+            <!-- LOADING DOTS... -->
+            <div class="spinner-box">
+                <div class="text">Loading</div>
+                <div class="pulse-container">
+                    <div class="pulse-bubble pulse-bubble-1"></div>
+                    <div class="pulse-bubble pulse-bubble-2"></div>
+                    <div class="pulse-bubble pulse-bubble-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

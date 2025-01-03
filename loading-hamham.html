@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <title>ローディング ハムハム</title>
+</head>
+
+<body>
+    <style>
+        .wrapper {
+            width: 200px;
+            height: 60px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hamham {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 15%;
+            transform-origin: 50%;
+            animation: hamham .5s alternate infinite ease;
+        }
+
+        @keyframes hamham {
+            0% {
+                top: 45px;
+                height: 5px;
+                transform: scaleX(1.7);
+            }
+
+            40% {
+                height: 20px;
+                transform: scaleX(1);
+            }
+
+            100% {
+                top: 0%;
+            }
+        }
+
+        .hamham:nth-child(2) {
+            left: 45%;
+            animation-delay: .2s;
+        }
+
+        .hamham:nth-child(3) {
+            left: auto;
+            right: 15%;
+            animation-delay: .3s;
+        }
+
+        .shadow {
+            width: 20px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, .5);
+            position: absolute;
+            top: 62px;
+            transform-origin: 50%;
+            z-index: -1;
+            left: 15%;
+            filter: blur(1px);
+            animation: shadow .5s alternate infinite ease;
+        }
+
+        @keyframes shadow {
+            0% {
+                transform: scaleX(1.5);
+            }
+
+            40% {
+                transform: scaleX(1);
+                opacity: .7;
+            }
+
+            100% {
+                transform: scaleX(.2);
+                opacity: .4;
+            }
+        }
+
+        .shadow:nth-child(4) {
+            left: 45%;
+            animation-delay: .2s
+        }
+
+        .shadow:nth-child(5) {
+            left: auto;
+            right: 15%;
+            animation-delay: .3s;
+        }
+    </style>
+    <div class="inner">
+        <h1>ローディングアニメーション ハムハム （css）</h1>
+        <p class="textSmall">参考 https://photopizza.design/css_loading/</p>
+        <div class="contents">
+            <div class="wrapper">
+                <div class="hamham"><img src="./img/DE8E25F7-D61D-44FA-BD3D-2FB4F31C8AA5_4_5005_c.jpeg" alt=""></div>
+                <div class="hamham"><img src="./img/DE8E25F7-D61D-44FA-BD3D-2FB4F31C8AA5_4_5005_c.jpeg" alt=""></div>
+                <div class="hamham"><img src="./img/DE8E25F7-D61D-44FA-BD3D-2FB4F31C8AA5_4_5005_c.jpeg" alt=""></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+            </div>
+        </div>
+    </div>
+</body>
